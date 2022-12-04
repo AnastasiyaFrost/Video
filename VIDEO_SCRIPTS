@@ -1,0 +1,16 @@
+Create TABLE author (id SERIAL PRIMARY KEY, name VARCHAR);
+Create TABLE book (name VARCHAR, author_id INT);
+INSERT INTO author (id, name) VALUES (1, 'Л.Н. Толстой');
+INSERT INTO author (id, name) VALUES (2, 'Ф.М. Достоевский');
+INSERT INTO book (name, author_id) VALUES ('Война и мир', 1);
+INSERT INTO book (name, author_id) VALUES ('Анна Каренина', 1);
+INSERT INTO book (name, author_id) VALUES ('Идиот', 2);
+INSERT INTO book (name, author_id) VALUES ('Братья Карамазовы', 2);
+SELECT book.name, author.name
+             FROM book
+             INNER JOIN author ON book.author_id = author.id
+             WHERE author.name = 'Л.Н. Толстой';
+SELECT book.name, author.name
+             FROM book
+             INNER JOIN author ON book.author_id = author.id
+             WHERE author.name = 'Ф.М. Достоевский';
